@@ -3,9 +3,6 @@ def to_command(line):
     return [e[0], int(e[1])]
 
 
-assert to_command('forward 5\n') == ["forward", 5]
-
-
 def dive(commands):
     horizontal_position = 0
     depth = 0
@@ -20,10 +17,6 @@ def dive(commands):
     # print(f"horizontal_position: {horizontal_position}, depth: {depth}")
 
     return horizontal_position, depth
-
-
-assert dive([["forward", 5], ["down", 5], ["forward", 8], [
-    "up", 3], ["down", 8], ["forward", 2]]) == (15, 10)
 
 
 def dive_with_aim(commands):
@@ -45,22 +38,19 @@ def dive_with_aim(commands):
     return horizontal_position, depth
 
 
-assert dive_with_aim([["forward", 5], ["down", 5], ["forward", 8], [
-    "up", 3], ["down", 8], ["forward", 2]]) == (15, 60)
-
-
 def load_input():
-    with open("2021/day2/input.txt") as f:
+    with open("aoc_2021/day2/input.txt") as f:
         return [to_command(line) for line in f.readlines()]
 
 
-commands = load_input()
+if __name__ == "__main__":
+    commands = load_input()
 
-print(f"Loaded {len(commands)} commands.")
-horizontal_position, depth = dive(commands)
-print(
-    f"Dived to horizontal_position: {horizontal_position} * depth: {depth} = {horizontal_position * depth}")
+    print(f"Loaded {len(commands)} commands.")
+    horizontal_position, depth = dive(commands)
+    print(
+        f"Dived to horizontal_position: {horizontal_position} * depth: {depth} = {horizontal_position * depth}")
 
-horizontal_position, depth = dive_with_aim(commands)
-print(
-    f"Dived with aim to horizontal_position: {horizontal_position} * depth: {depth} = {horizontal_position * depth}")
+    horizontal_position, depth = dive_with_aim(commands)
+    print(
+        f"Dived with aim to horizontal_position: {horizontal_position} * depth: {depth} = {horizontal_position * depth}")

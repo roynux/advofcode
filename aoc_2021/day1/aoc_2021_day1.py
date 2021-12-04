@@ -1,5 +1,5 @@
 def load_reports():
-    with open("2021/day1/input.txt") as reports_file:
+    with open("aoc_2021/day1/input.txt") as reports_file:
         return [int(report) for report in reports_file.readlines()]
 
 
@@ -34,13 +34,10 @@ def count_increased_part2(reports):
     return count
 
 
-assert count_increased([199, 200, 208, 210, 200, 207, 240, 269, 260, 263]) == 7
-assert count_increased_part2(
-    [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]) == 5
+if __name__ == '__main__':
+    reports = load_reports()
+    print(f"Loaded {len(reports)} reports.")
+    print("Number of increased reports: ", count_increased(reports))
 
-reports = load_reports()
-print(f"Loaded {len(reports)} reports.")
-print("Number of increased reports: ", count_increased(reports))
-
-print("Number of increased reports (sliding window): ",
-      count_increased_part2(reports))
+    print("Number of increased reports (sliding window): ",
+          count_increased_part2(reports))
